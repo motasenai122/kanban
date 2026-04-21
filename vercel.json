@@ -1,9 +1,7 @@
 {
   "version": 2,
-  "public": true,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
     { "source": "/auth/register", "destination": "/api/usuarios?route=register" },
     { "source": "/auth/login", "destination": "/api/usuarios?route=login" },
     { "source": "/auth/me", "destination": "/api/usuarios?route=me" },
