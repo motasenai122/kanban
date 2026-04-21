@@ -2,11 +2,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { verifyToken } = require('./_lib/auth');
 
-// SIMULAÇÃO DE BANCO DE DADOS EM MEMÓRIA
 let users = []; 
 
 export default async function handler(req, res) {
-    // CORS
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -18,10 +16,8 @@ export default async function handler(req, res) {
 
     try {
         const { route } = req.query;
-        // Garantir que o body existe
         const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
-        // ROTA: POST /api/usuarios?route=register
         if (req.method === 'POST' && route === 'register') {
             const { email, password, name } = body || {};
             if (!email || !password || !name) {
@@ -35,7 +31,6 @@ export default async function handler(req, res) {
             return res.status(201).json({ message: 'Usuário criado com sucesso!', email: newUser.email });
         }
 
-        // ROTA: POST /api/usuarios?route=login
         if (req.method === 'POST' && route === 'login') {
             const { email, password } = body || {};
             if (!email || !password) {
@@ -52,14 +47,12 @@ export default async function handler(req, res) {
                 return res.status(401).json({ message: 'Senha incorreta.' });
             }
 
-            // Fallback para secret caso não esteja no env
             const secret = process.env.JWT_SECRET || 'fallback-secret-para-teste';
             const token = jwt.sign({ id: user.id, email: user.email, name: user.name }, secret, { expiresIn: '1h' });
             
             return res.status(200).json({ token, user: { name: user.name, email: user.email } });
         }
 
-        // ROTA: GET /api/usuarios?route=me
         if (req.method === 'GET' && route === 'me') {
             const auth = verifyToken(req);
             if (auth.error) return res.status(auth.status).json({ message: auth.error });
@@ -70,10 +63,6 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('Erro na função usuarios:', error);
-        return res.status(500).json({ 
-            message: 'Erro interno no servidor.', 
-            error: error.message,
-            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
-        });
+        return res.status(500).json({ message: 'Erro interno no servidor.', error: error.message });
     }
 }

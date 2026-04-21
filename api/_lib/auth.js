@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// Simulação de blocklist (Em serverless isso resetará com o cold start)
 const tokenBlocklist = new Set();
 
 const verifyToken = (req) => {
@@ -15,7 +14,8 @@ const verifyToken = (req) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const secret = process.env.JWT_SECRET || 'fallback-secret-para-teste';
+        const decoded = jwt.verify(token, secret);
         return { user: decoded };
     } catch (error) {
         return { error: 'Token inválido ou expirado.', status: 403 };
