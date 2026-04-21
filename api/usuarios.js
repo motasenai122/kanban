@@ -1,5 +1,6 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs'); // Usando bcryptjs para melhor compatibilidade serverless
 const jwt = require('jsonwebtoken');
+const { verifyToken } = require('./_lib/auth');
 
 // SIMULAÇÃO DE BANCO DE DADOS EM MEMÓRIA
 // IMPORTANTE: Em produção, substitua este array por uma conexão com MongoDB, PostgreSQL ou Supabase.
@@ -46,7 +47,6 @@ export default async function handler(req, res) {
 
     // ROTA: GET /api/usuarios?route=me (Perfil)
     if (req.method === 'GET' && route === 'me') {
-        const { verifyToken } = require('./_lib/auth');
         const auth = verifyToken(req);
         if (auth.error) return res.status(auth.status).json({ message: auth.error });
 

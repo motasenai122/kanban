@@ -1,13 +1,17 @@
 {
-  "name": "projetokitskills",
+  "name": "kanban-serverless",
   "version": "1.0.0",
-  "description": "Kanban System - Serverless Version",
+  "description": "Sistema Kanban Serverless para Vercel",
   "main": "api/tarefas.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api/tarefas.js"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "jsonwebtoken": "^9.0.3"
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.x"
   }
 }
