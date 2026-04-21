@@ -2,6 +2,10 @@
   "name": "kanban-serverless",
   "version": "1.0.0",
   "description": "Sistema Kanban Serverless para Vercel",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "install": "npm install"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2"
