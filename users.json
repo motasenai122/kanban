@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1776450755533",
+    "name": "Gustavo",
+    "email": "gustavo@email.com",
+    "password": "$2b$10$5m7NuD59cKIgf0jMqtNXquDM3LR4yGSWOvn15dZxKZS5b70Xm2n4i"
+  },
+  {
+    "id": "1776453936704",
+    "name": "Gustavo",
+    "email": "teste@teste.com",
+    "password": "$2b$10$RHsGSc.A.FuEDD7IBKZEUeqb9JdblRIVqZUkWdi5ARbbFqCiWMC3."
+  },
+  {
+    "id": "1776794496373",
+    "name": "Mota",
+    "email": "mt@email.com",
+    "password": "$2b$10$uZdIXauCIU90cG0sBKi4bOGy1LmhwCA/O04noWJRpwu/Vycixp7se"
+  }
+]

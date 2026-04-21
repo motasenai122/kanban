@@ -1,0 +1,277 @@
+:root {
+    /* Cores Naturais e Frutiger Aero (Céu, Oceano, Natureza) */
+    --clr-bg-deep: #bae6fd;
+    --clr-bg-mid: #e0f2fe;
+    --clr-primary: #0284c7;
+    --clr-primary-hover: #0369a1;
+    --clr-text-main: #0f172a;
+    --clr-text-muted: #475569;
+    --clr-border: rgba(255, 255, 255, 0.8);
+    --clr-glass: rgba(255, 255, 255, 0.4);
+    --clr-error: #ef4444;
+    --clr-error-bg: rgba(254, 226, 226, 0.8);
+    --clr-success: #10b981;
+    --clr-success-bg: rgba(209, 250, 229, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--clr-bg-deep);
+    color: var(--clr-text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fundo animado - Frutiger Aero Nature / Ocean / Sky */
+.area-background {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    /* Gradient: Céu claro pro oceano e grama verde */
+    background: linear-gradient(180deg, #38bdf8 0%, #bae6fd 30%, #e0f2fe 60%, #86efac 100%);
+    z-index: -1;
+}
+
+/* Bolhas / Bubbles Frutiger Aero */
+.circles {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
+}
+
+.circles li {
+    position: absolute; display: block; list-style: none;
+    width: 20px; height: 20px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0.5) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05), inset 0 -4px 8px rgba(0,0,0,0.1);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    border-radius: 50%;
+}
+
+.circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+.circles li:nth-child(2) { left: 10%; width: 30px; height: 30px; animation-delay: 2s; animation-duration: 12s;}
+.circles li:nth-child(3) { left: 70%; width: 40px; height: 40px; animation-delay: 4s; }
+.circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s;}
+.circles li:nth-child(5) { left: 65%; width: 25px; height: 25px; animation-delay: 0s; }
+.circles li:nth-child(6) { left: 85%; width: 90px; height: 90px; animation-delay: 8s;}
+.circles li:nth-child(7) { left: 5%; width: 60px; height: 60px; animation-delay: 11s;}
+.circles li:nth-child(8) { left: 50%; width: 40px; height: 40px; animation-delay: 15s; animation-duration: 14s;}
+
+@keyframes animate {
+    0% { transform: translateY(0) scale(1); opacity: 1; border-radius: 50%; }
+    100% { transform: translateY(-1200px) scale(1.2); opacity: 0; border-radius: 50%; }
+}
+
+/* Glassmorphism - Glossy Aero Card */
+.glass-card {
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-top: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.6);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Auth Tabs */
+.tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 5px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tab-btn {
+    flex: 1; padding: 12px;
+    background: transparent;
+    border: none; color: var(--clr-text-muted);
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; border-radius: 20px;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: linear-gradient(to bottom, #ffffff, #e0f2fe);
+    color: var(--clr-primary-hover);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1), inset 0 2px 0 rgba(255,255,255,1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Formulários */
+.auth-form {
+    display: none;
+    animation: fadeIn 0.4s forwards;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-header {
+    text-align: center; margin-bottom: 30px;
+}
+.form-header h2 { font-size: 26px; font-weight: 700; margin-bottom: 5px; color: #0f172a; text-shadow: 0 1px 1px rgba(255,255,255,0.8); }
+.form-header p { color: var(--clr-text-muted); font-size: 14px; }
+
+.input-group {
+    display: flex; flex-direction: column; margin-bottom: 20px; position: relative;
+}
+
+.input-group label {
+    font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--clr-primary-hover); padding-left: 5px;
+}
+
+.input-group input {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    color: #0f172a; padding: 15px; border-radius: 12px; font-size: 15px;
+    transition: all 0.3s ease; outline: none;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.input-group input:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15), inset 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.input-group input::placeholder { color: #94a3b8; }
+
+.helper-group .helper-text {
+    font-size: 11px; color: var(--clr-text-muted); margin-top: 6px; padding-left: 5px;
+}
+
+/* Botões Frutiger Aero (Glossy) */
+.btn-primary {
+    width: 100%; padding: 15px;
+    background: linear-gradient(180deg, #38bdf8 0%, #0369a1 100%);
+    color: #fff;
+    border: 1px solid #075985;
+    border-top: 2px solid #baeffd;
+    border-radius: 25px;
+    font-size: 16px; font-weight: 600;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 15px rgba(2, 132, 199, 0.3), inset 0 2px 5px rgba(255,255,255,0.4);
+    cursor: pointer; transition: all 0.3s;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; width: 80%; height: 40%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+    border-radius: 25px 25px 50% 50%;
+    pointer-events: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(180deg, #7dd3fc 0%, #0284c7 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4), inset 0 2px 5px rgba(255,255,255,0.6);
+}
+
+.btn-secondary {
+    width: 100%; padding: 15px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+    color: var(--clr-primary-hover);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05), inset 0 2px 0 rgba(255,255,255,1);
+    font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s;
+    position: relative;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0.7));
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1), inset 0 2px 0 rgba(255,255,255,1);
+}
+
+/* Mensagens do Form (Erro e Sucesso) */
+.error-box, .success-box {
+    display: none; padding: 12px; border-radius: 8px; font-size: 14px; margin-bottom: 15px; font-weight: 600;
+}
+
+.error-box { background: var(--clr-error-bg); border: 1px solid #fca5a5; border-left: 5px solid var(--clr-error); color: #b91c1c; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.success-box { background: var(--clr-success-bg); border: 1px solid #6ee7b7; border-left: 5px solid var(--clr-success); color: #047857; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+/* Area Logada (Secure) */
+.user-profile {
+    text-align: center; margin-bottom: 30px;
+}
+
+.avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(180deg, #34d399 0%, #059669 100%);
+    margin: 0 auto 20px auto;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 32px; font-weight: 700; color: #fff;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.4), inset 0 4px 10px rgba(255,255,255,0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.avatar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 15%; width: 70%; height: 40%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%);
+    border-radius: 50px 50px 50% 50%;
+    pointer-events: none;
+}
+
+.avatar span {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.user-email { color: var(--clr-primary-hover); margin-bottom: 15px; font-size: 14px; font-weight: 500; }
+
+.badge-secure {
+    display: inline-block; padding: 6px 12px; border-radius: 20px;
+    background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%);
+    color: #fff;
+    font-size: 12px; font-weight: 600; border: 1px solid #059669;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.6), 0 4px 6px rgba(16, 185, 129, 0.2);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.dashboard-content {
+    background: rgba(255,255,255,0.5);
+    padding: 20px; border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+    margin-bottom: 30px; font-size: 14px; line-height: 1.6; color: var(--clr-text-muted); text-align: center;
+}
