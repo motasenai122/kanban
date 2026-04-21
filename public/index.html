@@ -8,75 +8,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <div class="area-background">
         <ul class="circles">
             <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
         </ul>
     </div >
-
     <main class="container">
-        <!-- Auth Container (Login & Registro) -->
         <div id="auth-container" class="glass-card">
-            
             <div class="tabs">
                 <button id="tab-login" class="tab-btn active">Acessar</button>
                 <button id="tab-register" class="tab-btn">Criar Conta</button>
             </div>
-
-            <!-- Formulário de Login -->
             <form id="form-login" class="auth-form active">
                 <div class="form-header">
                     <h2>Bem-vindo de volta</h2>
                     <p>Entre com suas credenciais para continuar.</p>
                 </div>
-                
                 <div class="input-group">
                     <label for="login-email">E-mail</label>
                     <input type="email" id="login-email" required placeholder="seu@email.com">
                 </div>
-                
                 <div class="input-group">
                     <label for="login-password">Senha</label>
                     <input type="password" id="login-password" required placeholder="••••••••">
                 </div>
-
                 <div class="error-box" id="login-error"></div>
-
                 <button type="submit" class="btn-primary" id="btn-submit-login">Entrar no sistema</button>
             </form>
-
-            <!-- Formulário de Registro -->
             <form id="form-register" class="auth-form">
                 <div class="form-header">
                     <h2>Junte-se a nós</h2>
                     <p>Crie sua conta para acessar conteúdos exclusivos.</p>
                 </div>
-                
                 <div class="input-group">
                     <label for="reg-name">Nome Completo</label>
                     <input type="text" id="reg-name" required placeholder="Seu Nome">
                 </div>
-
                 <div class="input-group">
                     <label for="reg-email">E-mail</label>
                     <input type="email" id="reg-email" required placeholder="seu@email.com">
                 </div>
-                
                 <div class="input-group helper-group">
                     <label for="reg-password">Senha</label>
                     <input type="password" id="reg-password" required placeholder="Ex: S3nh@Forte!">
                     <span class="helper-text">Mínimo 8 caracteres, 1 Maiúscula, 1 Número, 1 Especial (!@#)</span>
                 </div>
-
                 <div class="error-box" id="reg-error"></div>
                 <div class="success-box" id="reg-success"></div>
-
                 <button type="submit" class="btn-primary" id="btn-submit-reg">Finalizar Cadastro</button>
             </form>
         </div>
-
-        <!-- Área Segura (Logado) -->
         <div id="secure-container" class="glass-card hidden">
             <div class="user-profile">
                 <div class="avatar">
@@ -86,15 +67,12 @@
                 <p class="user-email" id="user-email">email@exemplo.com</p>
                 <div class="badge-secure">Acesso Verificado</div>
             </div>
-
             <div class="dashboard-content">
                 <p>Nesta área protegida, tudo o que você vê está validado pelo Token JWT em tempo real contra a nossa API.</p>
             </div>
-
             <button class="btn-secondary" id="btn-logoff">Sair de forma segura</button>
         </div>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>
