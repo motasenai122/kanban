@@ -8,32 +8,21 @@
     <link rel="stylesheet" href="kanban.css">
 </head>
 <body>
-    <!-- Fundo Animado Sagrado Cyber-Espiritual -->
     <div class="area-background"></div>
     <div class="sacred-geometry-bg">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <g stroke="rgba(16, 185, 129, 0.15)" stroke-width="0.3" fill="none">
-                <circle cx="100" cy="100" r="80"/>
-                <circle cx="100" cy="100" r="40"/>
+                <circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="40"/>
                 <polygon points="100,20 169.3,60 169.3,140 100,180 30.7,140 30.7,60"/>
-                <polygon points="100,20 169.3,140 30.7,140"/>
-                <polygon points="100,180 30.7,60 169.3,60"/>
-                <circle cx="100" cy="20" r="10"/>
-                <circle cx="169.3" cy="60" r="10"/>
-                <circle cx="169.3" cy="140" r="10"/>
-                <circle cx="100" cy="180" r="10"/>
-                <circle cx="30.7" cy="140" r="10"/>
-                <circle cx="30.7" cy="60" r="10"/>
-                <line x1="100" y1="20" x2="169.3" y2="140"/>
-                <line x1="169.3" y1="60" x2="100" y2="180"/>
-                <line x1="169.3" y1="140" x2="30.7" y2="60"/>
-                <line x1="100" y1="180" x2="100" y2="20"/>
-                <line x1="30.7" y1="140" x2="169.3" y2="60"/>
-                <line x1="30.7" y1="60" x2="100" y2="180"/>
+                <polygon points="100,20 169.3,140 30.7,140"/><polygon points="100,180 30.7,60 169.3,60"/>
+                <circle cx="100" cy="20" r="10"/><circle cx="169.3" cy="60" r="10"/><circle cx="169.3" cy="140" r="10"/>
+                <circle cx="100" cy="180" r="10"/><circle cx="30.7" cy="140" r="10"/><circle cx="30.7" cy="60" r="10"/>
+                <line x1="100" y1="20" x2="169.3" y2="140"/><line x1="169.3" y1="60" x2="100" y2="180"/>
+                <line x1="169.3" y1="140" x2="30.7" y2="60"/><line x1="100" y1="180" x2="100" y2="20"/>
+                <line x1="30.7" y1="140" x2="169.3" y2="60"/><line x1="30.7" y1="60" x2="100" y2="180"/>
             </g>
         </svg>
     </div>
-
     <header class="app-header glass-panel">
         <div class="logo">Kanban Tasks</div>
         <div class="user-controls">
@@ -41,160 +30,43 @@
             <button id="logoutBtn" class="btn btn-outline" aria-label="Sair">Sair</button>
         </div>
     </header>
-
     <main class="container">
-        <!-- Dashboard Section -->
         <section class="dashboard">
-            <div class="stat-card glass-panel">
-                <div class="stat-title">Total de Tarefas</div>
-                <div class="stat-value" id="stat-total">0</div>
-            </div>
-            <div class="stat-card glass-panel">
-                <div class="stat-title">A Fazer</div>
-                <div class="stat-value" id="stat-todo">0</div>
-            </div>
-            <div class="stat-card glass-panel">
-                <div class="stat-title">Em Execução</div>
-                <div class="stat-value" id="stat-doing">0</div>
-            </div>
-            <div class="stat-card glass-panel">
-                <div class="stat-title">Concluídas</div>
-                <div class="stat-value" id="stat-done">0</div>
-            </div>
-            <div class="stat-card stat-danger glass-panel">
-                <div class="stat-title">Atrasadas</div>
-                <div class="stat-value" id="stat-overdue">0</div>
-            </div>
-            <div class="stat-card glass-panel">
-                <div class="stat-title">Taxa de Conclusão</div>
-                <div class="stat-value" id="stat-rate">0%</div>
-            </div>
+            <div class="stat-card glass-panel"><div class="stat-title">Total de Tarefas</div><div class="stat-value" id="stat-total">0</div></div>
+            <div class="stat-card glass-panel"><div class="stat-title">A Fazer</div><div class="stat-value" id="stat-todo">0</div></div>
+            <div class="stat-card glass-panel"><div class="stat-title">Em Execução</div><div class="stat-value" id="stat-doing">0</div></div>
+            <div class="stat-card glass-panel"><div class="stat-title">Concluídas</div><div class="stat-value" id="stat-done">0</div></div>
+            <div class="stat-card stat-danger glass-panel"><div class="stat-title">Atrasadas</div><div class="stat-value" id="stat-overdue">0</div></div>
+            <div class="stat-card glass-panel"><div class="stat-title">Taxa de Conclusão</div><div class="stat-value" id="stat-rate">0%</div></div>
         </section>
-
-        <!-- Board Header Action -->
-        <div class="board-actions">
-            <h2>Quadro Kanban</h2>
-            <button id="newTaskBtn" class="btn btn-primary">➕ Nova Tarefa</button>
-        </div>
-
-        <!-- Kanban Board Section -->
+        <div class="board-actions"><h2>Quadro Kanban</h2><button id="newTaskBtn" class="btn btn-primary">➕ Nova Tarefa</button></div>
         <section class="kanban-board">
-            
-            <div class="column glass-panel" id="col-todo" data-status="todo">
-                <div class="column-header">
-                    <h3>A Fazer</h3>
-                    <span class="count-badge" id="count-todo">0</span>
-                </div>
-                <div class="column-body" id="drop-todo">
-                    <!-- Cards dinâmicos -->
-                </div>
-            </div>
-
-            <div class="column glass-panel" id="col-doing" data-status="doing">
-                <div class="column-header">
-                    <h3>Em Execução</h3>
-                    <span class="count-badge" id="count-doing">0</span>
-                </div>
-                <div class="column-body" id="drop-doing">
-                    <!-- Cards dinâmicos -->
-                </div>
-            </div>
-
-            <div class="column glass-panel" id="col-done" data-status="done">
-                <div class="column-header">
-                    <h3>Concluídas</h3>
-                    <span class="count-badge" id="count-done">0</span>
-                </div>
-                <div class="column-body" id="drop-done">
-                    <!-- Cards dinâmicos -->
-                </div>
-            </div>
-
+            <div class="column glass-panel" id="col-todo" data-status="todo"><div class="column-header"><h3>A Fazer</h3><span class="count-badge" id="count-todo">0</span></div><div class="column-body" id="drop-todo"></div></div>
+            <div class="column glass-panel" id="col-doing" data-status="doing"><div class="column-header"><h3>Em Execução</h3><span class="count-badge" id="count-doing">0</span></div><div class="column-body" id="drop-doing"></div></div>
+            <div class="column glass-panel" id="col-done" data-status="done"><div class="column-header"><h3>Concluídas</h3><span class="count-badge" id="count-done">0</span></div><div class="column-body" id="drop-done"></div></div>
         </section>
     </main>
-
-    <!-- Modal Form (Create/Edit) -->
     <div id="taskModal" class="modal-overlay hidden">
         <div class="modal-content glass-panel">
-            <div class="modal-header">
-                <h3 id="modalTitle">Nova Tarefa</h3>
-                <button id="closeModalBtn" class="btn-close">❌</button>
-            </div>
+            <div class="modal-header"><h3 id="modalTitle">Nova Tarefa</h3><button id="closeModalBtn" class="btn-close">❌</button></div>
             <form id="taskForm">
                 <input type="hidden" id="taskId">
-                
-                <div class="form-group">
-                    <label for="taskTitle">Título *</label>
-                    <input type="text" id="taskTitle" name="title" maxlength="100" required placeholder="Ex: Desenvolver API">
-                </div>
-
-                <div class="form-group">
-                    <label for="taskDesc">Descrição</label>
-                    <textarea id="taskDesc" name="description" maxlength="500" placeholder="Detalhes opcionais da tarefa..."></textarea>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="taskPriority">Prioridade *</label>
-                        <select id="taskPriority" name="priority" required>
-                            <option value="low">Baixa</option>
-                            <option value="medium">Média</option>
-                            <option value="high">Alta</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="taskStatus">Status *</label>
-                        <select id="taskStatus" name="status" required>
-                            <option value="todo">A Fazer</option>
-                            <option value="doing">Em Execução</option>
-                            <option value="done">Concluída</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="taskStart">Data de Início</label>
-                        <input type="date" id="taskStart" name="startDate">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="taskDue">Prazo</label>
-                        <input type="date" id="taskDue" name="dueDate">
-                    </div>
-                </div>
-
+                <div class="form-group"><label for="taskTitle">Título *</label><input type="text" id="taskTitle" name="title" maxlength="100" required placeholder="Ex: Desenvolver API"></div>
+                <div class="form-group"><label for="taskDesc">Descrição</label><textarea id="taskDesc" name="description" maxlength="500" placeholder="Detalhes opcionais da tarefa..."></textarea></div>
+                <div class="form-row"><div class="form-group"><label for="taskPriority">Prioridade *</label><select id="taskPriority" name="priority" required><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select></div><div class="form-group"><label for="taskStatus">Status *</label><select id="taskStatus" name="status" required><option value="todo">A Fazer</option><option value="doing">Em Execução</option><option value="done">Concluída</option></select></div></div>
+                <div class="form-row"><div class="form-group"><label for="taskStart">Data de Início</label><input type="date" id="taskStart" name="startDate"></div><div class="form-group"><label for="taskDue">Prazo</label><input type="date" id="taskDue" name="dueDate"></div></div>
                 <div id="formError" class="error-message"></div>
-
-                <div class="modal-footer">
-                    <button type="button" id="cancelModalBtn" class="btn btn-outline">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
-                </div>
+                <div class="modal-footer"><button type="button" id="cancelModalBtn" class="btn btn-outline">Cancelar</button><button type="submit" class="btn btn-primary">Salvar Tarefa</button></div>
             </form>
         </div>
     </div>
-
-    <!-- Template for Card -->
     <template id="card-template">
         <div class="task-card glass-panel" draggable="true">
-            <div class="card-header">
-                <span class="badge priority-badge">Normal</span>
-                <div class="card-actions">
-                    <button class="icon-btn complete-action" title="Marcar como Concluída">✅</button>
-                    <button class="icon-btn edit-action" title="Editar">✏️</button>
-                    <button class="icon-btn delete-action" title="Excluir">🗑️</button>
-                </div>
-            </div>
-            <h4 class="card-title">Task Title</h4>
-            <div class="dates-info"></div>
-            <div class="mobile-actions">
-                <button class="m-action move-left" title="Mover para esquerda">⬅️</button>
-                <button class="m-action move-right" title="Mover para direita">➡️</button>
-            </div>
+            <div class="card-header"><span class="badge priority-badge">Normal</span><div class="card-actions"><button class="icon-btn complete-action" title="Marcar como Concluída">✅</button><button class="icon-btn edit-action" title="Editar">✏️</button><button class="icon-btn delete-action" title="Excluir">🗑️</button></div></div>
+            <h4 class="card-title">Task Title</h4><div class="dates-info"></div>
+            <div class="mobile-actions"><button class="m-action move-left" title="Mover para esquerda">⬅️</button><button class="m-action move-right" title="Mover para direita">➡️</button></div>
         </div>
     </template>
-
     <script src="kanban.js"></script>
 </body>
 </html>
